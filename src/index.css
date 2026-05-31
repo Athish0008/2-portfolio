@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-navy-900 text-slate-50 font-sans antialiased;
+}
+
+/* Global smooth transitions */
+* {
+  scroll-behavior: auto;
+}
+
+/* Sections containment for perf */
+section[data-section] {
+  contain: layout style paint;
+  will-change: transform, opacity;
+}
+
+/* Hero gradient blob */
+@keyframes blobPulse {
+  0% {
+    transform: translate3d(-10px, 0, 0) scale(0.98);
+  }
+  50% {
+    transform: translate3d(10px, -10px, 0) scale(1.02);
+  }
+  100% {
+    transform: translate3d(-10px, 0, 0) scale(0.98);
+  }
+}
+
+.hero-blob {
+  animation: blobPulse 10s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Particle sphere */
+@keyframes orbitSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.particle-orbit {
+  animation: orbitSlow 24s linear infinite;
+  will-change: transform;
+}
+
+/* Spotlight sway */
+@keyframes spotlightSway {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-2deg);
+  }
+  50% {
+    transform: translate3d(0, 2px, 0) rotate(2deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-2deg);
+  }
+}
+
+.spotlight-sway {
+  animation: spotlightSway 3.4s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+
